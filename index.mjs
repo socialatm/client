@@ -1,10 +1,9 @@
+import 'dotenv/config'
 import { createServer } from 'node:https'
 import { readFileSync } from 'node:fs'
-import 'dotenv/config'
 import express from 'express'
 
 const app = express()
-
 const options = {
   key: readFileSync(process.env.OPP_KEY),
   cert: readFileSync(process.env.OPP_CERT)
