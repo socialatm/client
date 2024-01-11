@@ -1,6 +1,9 @@
-import { createServer } from 'node:https';
-import { readFileSync } from 'node:fs';
+import { createServer } from 'node:https'
+import { readFileSync } from 'node:fs'
 import 'dotenv/config'
+import express from 'express'
+
+const app = express()
 
 const options = {
   key: readFileSync(process.env.OPP_KEY),
@@ -11,13 +14,13 @@ try {
   createServer(options, (req, res) => {
     try {
       res.writeHead(200);
-      res.end('hello world\n hello');
+      res.end('homepage');
     } catch (err) {
       console.error(err);
       res.statusCode = 500;
       res.end('Internal Server Error'); 
     }
-  }).listen(process.env.OPP_PORT);
+  },app).listen(process.env.OPP_PORT);
 } catch (err) {
   console.error('Error starting HTTPS server:', err);
   process.exit(1);
