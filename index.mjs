@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import { createServer } from 'node:https'
 import { readFileSync } from 'node:fs'
 import express from 'express'

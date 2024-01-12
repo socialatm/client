@@ -4,12 +4,12 @@
   "description": "client",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "node --env-file=.env index.mjs"
   },
   "author": "ray peaslee",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^16.3.1",
     "express": "^4.18.2"
   }
 }
