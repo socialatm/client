@@ -16,10 +16,20 @@ app.use('/contact', contactRoutes);
 const key = readFileSync(process.env.OPP_KEY)
 const cert = readFileSync(process.env.OPP_CERT)
 
-// Start the server
+// Create the server
 const server = createServer({
   key: key,
-  cert: cert
-}, app).listen(process.env.OPP_PORT)
+  cert: cert  
+}, app)
 
-console.log(`Server listening on port: ${process.env.OPP_PORT}`);
+server.on('error', err => {
+  console.error('Error starting server:', err)
+})
+
+server.listen(process.env.OPP_PORT, err => {
+  if (err) {
+    console.error('Error starting server:', err)
+  } else {
+    console.log('Server listening on port:', process.env.OPP_PORT) 
+  }
+})
